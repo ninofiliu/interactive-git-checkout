@@ -1,0 +1,16 @@
+{
+    "name": "git-checkout-interactive",
+    "version": "0.0.0",
+    "description": "CLI for simple branch switching",
+    "keywords": [
+        "cli",
+        "git",
+        "git-checkout",
+        "git-branch"
+    ],
+    "licence": "ISC",
+    "author": "Nino Filiu <https://ninofiliu.com>",
+    "bin": {
+        "gci": "cli.js"
+    }
+}
