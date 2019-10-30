@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const {exec: execCb} = require('child_process');
 const {promisify} = require('util');
 const prompts = require('prompts');
