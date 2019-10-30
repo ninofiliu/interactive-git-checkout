@@ -2,6 +2,8 @@
 
 CLI for simple branch switching
 
+![demo gif](./demo.gif)
+
 ## Getting started
 
 ```sh
