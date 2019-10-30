@@ -4,8 +4,10 @@ const prompts = require('prompts');
 const exec = promisify(execCb);
 
 (async () => {
-    const {branches, currenBranchIndex} = await getBranches();
+    const {branches, currentBranchIndex} = await getBranches();
     const targetBranch = await promptTargetBranch();
+    if (!targetBranch) process.exit(1);
+    await checkout();
 
     async function getBranches() {
         const {stdout, stderr} = await exec('git branch', {encoding: 'utf8'});
@@ -14,7 +16,7 @@ const exec = promisify(execCb);
         }
         const branches = [];
         let currentBranchIndex;
-        const branchLines = stdout.trim().split('\n');
+        const branchLines = stdout.trimEnd().split('\n');
         branchLines.forEach((branchLine, index) => {
             if (branchLine.startsWith('*')) currentBranchIndex = index;
             branches.push(branchLine.substring(2));
@@ -31,8 +33,18 @@ const exec = promisify(execCb);
                 title: branch,
                 value: branch,
             })),
-            initial: currenBranchIndex,
+            initial: currentBranchIndex,
         });
         return branch;
+    }
+
+    async function checkout() {
+        try {
+            const {stdout, stderr} = await exec(`git checkout ${targetBranch}`);
+            process.stderr.write(stderr);
+            process.stdout.write(stdout);
+        } catch (e) {
+            console.log(e.message.trim());
+        }
     }
 })();
