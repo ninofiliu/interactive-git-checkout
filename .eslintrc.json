@@ -4,7 +4,9 @@
         "es6": true,
         "node": true
     },
-    "extends": ["google"],
+    "extends": [
+        "airbnb-base"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -14,6 +16,6 @@
     },
     "rules": {
         "indent": ["error", 4],
-        "require-jsdoc": ["off"]
+        "no-console": ["off"]
     }
 }
