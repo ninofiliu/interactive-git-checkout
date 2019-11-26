@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const getBranches = require('./getBranches');
 const promptTargetBranch = require('./promptTargetBranch');
 const checkout = require('./checkout');
