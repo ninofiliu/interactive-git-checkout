@@ -5,7 +5,7 @@ module.exports = async ({ branches, currentBranchIndex }) => {
         type: 'select',
         message: 'Select branch to checkout to',
         name: 'targetBranch',
-        choices: branches.map((branch) => ({
+        choices: [...branches, 'New branch...'].map((branch) => ({
             title: branch,
             value: branch,
         })),
