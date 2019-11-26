@@ -11,5 +11,9 @@ module.exports = async ({ branches, currentBranchIndex }) => {
         })),
         initial: currentBranchIndex,
     });
+    if (!targetBranch) {
+        console.log('No branch specified, exiting...');
+        process.exit(0);
+    }
     return targetBranch;
 };
