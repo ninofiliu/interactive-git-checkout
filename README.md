@@ -4,14 +4,16 @@ CLI for simple branch switching
 
 ![demo gif](./demo.gif)
 
-## Getting started
-
 ```sh
-# Installs the CLI
+# Install the CLI
 npm install --global interactive-git-checkout
+
+# Use this command to interactively check out
 igc
 
-# (optional) make an alias
+# Or make a git alias
 git config --global alias.co '!igc'
 git co
+
+# Ctrl+C at any point safely aborts everything
 ```
