@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const { exec: execCb } = require('child_process');
+const { execFile: execFileCb } = require('child_process');
 const { promisify } = require('util');
 
-const exec = promisify(execCb);
+const execFile = promisify(execFileCb);
 
 module.exports = async () => {
-    const { stdout, stderr } = await exec('git branch', { encoding: 'utf8' });
+    const { stdout, stderr } = await execFile('git', ['branch'], { encoding: 'utf8' });
     if (stderr !== '') {
         throw new Error(`Error while running "git branch": ${stderr}`);
     }
